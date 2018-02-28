@@ -24,3 +24,15 @@
 .step {
   margin-bottom:300px;
 }
+
+
+.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
