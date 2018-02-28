@@ -1,52 +1,56 @@
-// SVG to work with
-var svg = d3.select('#vis')
-  .append('svg')
-  .attr('height', 200)
-  .attr('width', 200)
+$.when(
+    $.getScript("js/treelayout.js"),
+    $.getScript("js/d3-waffle.js"),
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(function(){
 
-function chooseVis(section) {
-  d3.select("#test1").remove();
 
-  if (section == 1) {
-    //lol();
-    test();
-  } else {
-  //d3.select("#test1").remove();
+  function chooseVis(section) {
+    d3.select("#earth-things").remove();
+    d3.select("#waffle").remove();
+    if (section == 1) {
+      earthlyBees()
+    } else if (section == 2){
+     drawWaffle()
+    }
   }
-}
 
-var update = function(value) {
-  console.log(value);
-  switch(value) {
-    case 0:
-      break;
-    case 1:
-      break;
-    case 2:
-      break;
-    case 3:
+  var update = function(value) {
+    console.log(value);
+    switch(value) {
+      case 0:
         break;
-    case 4:
+      case 1:
         break;
-    case 5:
+      case 2:
         break;
-    case 6:
-        break;
+      case 3:
+          break;
+      case 4:
+          break;
+      case 5:
+          break;
+      case 6:
+          break;
 
+    }
+    chooseVis(value);
   }
-  chooseVis(value);
-}
-// setup scroll functionality
-var scroll = scroller()
-    .container(d3.select('#graphic'));
+  // setup scroll functionality
+  var scroll = scroller()
+      .container(d3.select('#graphic'));
 
-// pass in .step selection as the steps
-scroll(d3.selectAll('.step'));
+  // pass in .step selection as the steps
+  scroll(d3.selectAll('.step'));
 
-// Pass in desired update function
+  // Pass in desired update function
 
-// Pass the update function to the scroll object
-scroll.update(update)
+  // Pass the update function to the scroll object
+  scroll.update(update)
+
+});
 
 
 
