@@ -1,23 +1,20 @@
 // SVG to work with
 function drawWaffle() {
   var data2 = [
-    { "name": "Mortgage ($84,911)", "value": 84911},
-    { "name": "Auto and\ntuition loans ($14,414)", "value": 14414},
-    { "name": "Home equity loans ($10,062)", "value": 10062},
-    { "name": "Credit Cards ($8,565)", "value": 8565}
+    { "name": "Infected Bees", "value": 75},
+    { "name": "Healthy Bees", "value": 25}
   ]
 
   /* to color elements we use the class name ( slugigy(name) ) */
   var domain = data2.map(function(d){ return slugify(d.name); })
-  var range = ["#c7d4b6", "#a3aabd", "#a0d0de", "#97b5cf"]
+  var range = ["#fc8d59", "#91cf60", "#a0d0de", "#97b5cf"]
   var palette = d3.scale.ordinal().domain(domain).range(range);
 
   var chart4 = d3waffle()
-                  .rows(12)
-                  .scale(1/392/2)
+                  .rows(10)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
-                  .height(300);
+                  .height(500);
 
   d3.select("#vis").append("svg")
     .attr("width", 600)
@@ -29,14 +26,14 @@ function drawWaffle() {
 
 function d3waffle () {
   var margin = {top: 10, right: 10, bottom: 10, left: 10},
-      icon = "&#9632;",
+      icon = "&#10047;",
       scale = 1,
       rows = 10,
       adjust = 0.8,
       colorscale = d3.scale.category20(),
       appearancetimes = function(d, i){ return 500; },
       height = 200,
-      magic_padding = 5;
+      magic_padding = 10;
 
   function chart(selection) {
 
@@ -129,6 +126,7 @@ function d3waffle () {
             .style("fill", "white")
             .attr('class', function(d){ return d.class; })
             .style("stroke", "gray")
+						.style("margin", 5)
             .attr("width", gridSize)
             .attr("height", gridSize)
             .on("mouseover", mouseover)
@@ -136,35 +134,6 @@ function d3waffle () {
             .on("mousemove", mousemove)
             .style("opacity", 0)
 
-      var legend = svg.selectAll('.legend')
-          .data(data)
-          .enter().append('g')
-          .attr('class', function(d){ return "legend" + " " + d.class; })
-          .attr("transform", function(d) { return "translate(" + (cols*gridSize + magic_padding) + "," + magic_padding + ")"; })
-
-      legend.append('text')
-            .attr('x', gridSize)
-            .attr('y', function(d, i){ return i * gridSize + i * magic_padding / 2;})
-            .style("opacity", 1)
-            .html(function(d){ return icon; })
-            .attr('class', function(d){ return d.class; })
-            .attr('font-family', 'FontAwesome')
-            .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
-            .style('fill', function(d){ return colorscale(d.class); })
-            /*.style("font-size", function(d) {
-              val = 9;
-              val2 = 2.5;
-              textsize = Math.min(val2 * gridSize, (val2 * gridSize - val) / this.getComputedTextLength() * val);
-              return textsize * adjust + "px";
-            });*/
-
-      legend.append('text')
-            .attr('x', 1.5*gridSize + magic_padding)
-            .attr('y', function(d, i){ return i * gridSize + i * magic_padding / 2;})
-            .style("opacity", 1)
-            .html(function(d){ return d.name; })
-            .attr('class', function(d){ return "waffle-legend-text" + " " + d.class; })
-            .attr("transform", function(d) { return "translate(" + gridSize/2 + "," + 5/6*gridSize  + ")"; })
 
       function mouseover(d){
         tooltip.transition().duration(100).style("opacity", .9);
