@@ -1,6 +1,7 @@
 $.when(
     $.getScript("js/treelayout.js"),
     $.getScript("js/d3-waffle.js"),
+		$.getScript("js/linechart.js"),
     $.Deferred(function( deferred ){
         $( deferred.resolve );
     })
@@ -8,12 +9,18 @@ $.when(
 
 
   function chooseVis(section) {
+
     d3.select("#earth-things").remove();
     d3.select("#waffle").remove();
-    if (section == 1) {
+d3.select("#line-chart").remove();
+		if (section == 0) {
+		//drawLines()
+		} else if (section == 1) {
+
+
       earthlyBees()
     } else if (section == 2){
-     drawWaffle()
+     	drawWaffle()
     }
   }
 

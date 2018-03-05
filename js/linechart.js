@@ -1,10 +1,3 @@
-
-	// Settings object
-	/* var settings = {
-	  showX: true,
-	  showY:false,
-	} */
-
   var dataset;
   var showAlmond = false;
   var showApple = false;
@@ -17,8 +10,6 @@
   var coffeeLength;
   var x;
   var y;
-
-
 
   var width = 580;
   var height = 550;
@@ -36,9 +27,11 @@
      // height = +svg.attr("height") - margin.top - margin.bottom,
      //width = width - margin.left - margin.right,
     // height = height - margin.top - margin.bottom,
+
      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var color = d3.scale.category10();
+
 
   console.log(width);
   console.log(height);
@@ -247,4 +240,3 @@
           .attr("stroke-dashoffset", 0);
 
   }
-
