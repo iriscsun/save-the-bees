@@ -1,32 +1,5 @@
-#sections {
-  position: relative;
-  display: inline-block;
-  width: 350px;
-  margin-bottom:250px;
-}
-
-#vis {
-  display: inline-block;
-  position: fixed;
-  top: 60px;
-  height: 600px;
-  width: 600px;
-  margin-left:20px;
-  border:1px solid gray;
-}
-
-/* increase the font size for the title class */
-.title {
-  font-size:30px;
-}
-
-/* Give the step class a margin bottom of 300px */
-.step {
-  margin-bottom:300px;
-}
-
-
 /******  TREE LAYOUT MONICA  ******/
+
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
 body {
     font-family: "Source Code Pro", Consolas, monaco, monospace;
@@ -75,3 +48,42 @@ a:hover {
 a:active {
      color: #EE3124;
     }
+#sections {
+  position: relative;
+  display: inline-block;
+  width: 350px;
+  margin-bottom:250px;
+}
+
+#vis {
+  display: inline-block;
+  position: fixed;
+  top: 60px;
+  height: 600px;
+  width: 600px;
+  margin-left:20px;
+  border:1px solid gray;
+}
+
+/* increase the font size for the title class */
+.title {
+  font-size:30px;
+}
+
+/* Give the step class a margin bottom of 300px */
+.step {
+  margin-bottom:300px;
+}
+
+/******  LINE CHART DARRYL ******/
+
+.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}

@@ -17,7 +17,7 @@ function drawWaffle() {
                   .scale(1/392/2)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
-                  .height(320);
+                  .height(300);
 
   d3.select("#vis").append("svg")
     .attr("width", 600)
