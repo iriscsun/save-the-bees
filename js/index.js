@@ -13,15 +13,21 @@ $.when(
     d3.select("#earth-things").remove();
     d3.select("#waffle").remove();
     d3.select("#line-chart").remove();
+    d3.select("#simulation").remove();
 
 		if (section == 0) {
-		drawLines()
+
+    earthlyBees()
 		} else if (section == 1) {
-      earthlyBees()
+      drawPesticides()
     } else if (section == 2){
-     	drawWaffle()
+     	drawSimulation()
     } else if (section == 3){
-      drawSimulation()
+      drawBees()
+    } else if (section == 4){
+      drawLines()
+    } else if (section == 5){
+      //
     }
   }
 

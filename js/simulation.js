@@ -2,18 +2,17 @@ function drawSimulation(){
     console.log("in step 3");
     var w = d3.select('#vis').node().getBoundingClientRect().width,
     h = w,
-    eps = 0.01,
     N = 20;
+    var alive = N*N;
     var blue = d3.rgb(100,100,200),
         red = d3.rgb(200,100,100),
-        //green = d3.rgb(100,200,100);
-        green = d3.rgb(200,200,200);
+        green = d3.rgb(255,255,255);
     var grid = d3.layout.grid()
     .nodeSize([h*0.8/(N*2), h*0.8/(N*2)])
     .padding([h*0.8/(N*2), h*0.8/(N*2)]);
 
-    var beta = eps*1,
-        gamma = eps*0.5;
+    var sick = 0.08
+        die = 0.03;
 
     var nodes = [];
     var force,root,svg,button;
@@ -25,14 +24,15 @@ function drawSimulation(){
 
         d3.select("svg").remove();
         svg = d3.select("#vis").append("svg")
+            .attr("id", "simulation")
             .attr("width", w)
             .attr("height", h);
         console.log();
-        
+
         //create id
         var count = 0;
 
-        nodes = d3.range(N*N).map(function() { return {id: count++, radius: h*0.8/(N*2), infected: Math.random()<0.01, immune:false}; });
+        nodes = d3.range(N*N).map(function() { return {id: count++, radius: h*0.8/(N*2), infected: Math.random()<0.01, dead:false}; });
             svg.selectAll("circle")
             .data(grid(nodes), function(d) {return d.id; })
             .enter().append("svg:circle")
@@ -43,94 +43,60 @@ function drawSimulation(){
             .on("click", function(d,i){
                     d.radius=20;
                     d3.select(this).attr('stroke','black');
-                    nodes[i].immune = true;
-      
+                    nodes[i].dead = true;
+
             });
         }
-        $('#pause').on('click',function(){
-            pause = !pause;
-          });
-          $('#reset').on('click',startSim);
+        // $('#pause').on('click',function(){
+        //     pause = !pause;
+        //   });
+        //   $('#reset').on('click',startSim);
           startSim();
 
-        latticeNeighbors = function(ind,N){
-            /*
-            Takes in index and calculates where in the lattice it is
-            2. calculates its neighbors.
-               - first calculate left,right,up,down
-               - next check if these are outside the boundary if so discard.
-            3. converts these neighbors back into a lattice form.
-            lattice indexes 0,...,N-1 by 0,...,N-1
-            */
-            var i = Math.floor(ind/N), j = (ind%N);
-            neighbors =[];
-            // if (i-1>=0){ neighbors.push([i-1,j]); } //left
-            // if (i+1<N){  neighbors.push([i+1,j]); }//right
-            // if (j+1<N){  neighbors.push([i,j+1]); } //up
-            // if (j-1>=0){ neighbors.push([i,j-1]); } //down
-            neighbors.map(function(item,index){ //convert back into index.
-              return N*item[0] + item[1];
-            });
+        infected = function (i, N) {
+          function getRandomArbitrary(min, max) {
+              return Math.floor(Math.random() * (max - min) + min);
+          }
 
-            console.log(neighbors);
-            return neighbors;
-        }
-        indNeighbors = function(ind,N){
-            var inds = latticeNeighbors(ind,N).map(function(item,index){ //convert back into index.
-                return N*item[0] + item[1];
-            });
-            
-            return inds
+          return([getRandomArbitrary(0, 400)]);
+
         }
 
-    setInterval(function () {
+        setInterval(function () {
+
         if (!pause) {
-            var i = 0,
-                n = nodes.length,
-                I = 0,
-                S = 0;
-            for (var j = 0; j < n; j++) {
-                I += nodes[j].infected & !nodes[j].immune;
-                S += !nodes[j].infected & !nodes[j].immune;
-            }
-            //t += eps;
-            if (!(I == 0 || S == 0)) {
-                //data[0].x.push(t); data[0].y.push(S);
-                //data[1].x.push(t); data[1].y.push(I);
-                //Plotly.redraw('graphDiv');
-            }
-            for (i = 0; i < n; i++) {
+            for (i = 0; i < nodes.length; i++) {
                 if (nodes[i].infected) {
-
-                    var neighbors = indNeighbors(i, N);
-                    for (var ni = 0; ni < neighbors.length; ni++) {
-                        if (Math.random() < beta & !nodes[neighbors[ni]].immune) {
-                            nodes[neighbors[ni]].infected = true;
+                    var colony = infected(i, N);
+                    for (var k = 0; k < colony.length; k++) {
+                        if (Math.random() < sick & !nodes[colony[k]].dead) {
+                            nodes[colony[k]].infected = true;
                         }
                     }
 
-                    if (Math.random() < gamma) {
+                    if (Math.random() < die) {
                         nodes[i].infected = false;
-                        nodes[i].immune = true;
+                        nodes[i].dead = true;
                     }
 
                 }
             }
             svg.selectAll("circle").style("fill", function (d, i) {
                 var col = blue;
-                if (nodes[i].infected & !nodes.immune) {
+                if (nodes[i].infected & !nodes.dead) {
                     col = red;
                 }
-                if (nodes[i].immune) {
+                if (nodes[i].dead) {
                     col = green;
+                    alive--;
                 }
                 return col;
             });
 
-            if (I == 0 || S == 0) {
-
-                button.style("visibility", "visible");
-            }
+            // if (I == 0 || S == 0) {
+            //
+            //     button.style("visibility", "visible");
+            // }
         }
     }, 100);
 }

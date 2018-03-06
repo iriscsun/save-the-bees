@@ -1,5 +1,5 @@
 // SVG to work with
-function drawWaffle() {
+function drawPesticides() {
   var data2 = [
     { "name": "Clean Honey", "value": 25},
     { "name": "Infected Honey", "value": 75}
@@ -10,7 +10,7 @@ function drawWaffle() {
   var range = ["#ffbf00", "#fff", "#a0d0de", "#97b5cf"]
   var palette = d3.scale.ordinal().domain(domain).range(range);
 
-  var chart4 = d3waffle()
+  var chart4 = d3waffle("&#11042")
                   .rows(10)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
@@ -25,10 +25,36 @@ function drawWaffle() {
     .attr("stroke", "#ffbf00");
 }
 
-function d3waffle () {
+function drawBees() {
+  var data2 = [
+    { "name": "Clean Honey", "value": 25},
+    { "name": "Infected Honey", "value": 75}
+  ]
+
+  /* to color elements we use the class name ( slugigy(name) ) */
+  var domain = data2.map(function(d){ return slugify(d.name); })
+  var range = ["#cc0000", "#fff", "#a0d0de", "#97b5cf"]
+  var palette = d3.scale.ordinal().domain(domain).range(range);
+
+  var chart4 = d3waffle("&#x273F")
+                  .rows(10)
+                  .colorscale(palette)
+                  .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
+                  .height(500);
+
+  d3.select("#vis").append("svg")
+    .attr("width", 600)
+    .attr("height", 600)
+    .attr("id", "waffle")
+    .datum(data2)
+    .call(chart4)
+    .attr("stroke", "#cc0000");
+}
+
+function d3waffle (iconCode) {
   var margin = {top: 10, right: 10, bottom: 10, left: 10},
       //icon = "&#11043;",
-      icon = "&#11042;",
+      icon = iconCode,
       scale = 1,
       rows = 10,
       adjust = 0.7,
