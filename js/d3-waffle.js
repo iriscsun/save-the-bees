@@ -1,13 +1,13 @@
 // SVG to work with
 function drawWaffle() {
   var data2 = [
-    { "name": "Infected Bees", "value": 75},
-    { "name": "Healthy Bees", "value": 25}
+    { "name": "Clean Honey", "value": 25},
+    { "name": "Infected Honey", "value": 75}
   ]
 
   /* to color elements we use the class name ( slugigy(name) ) */
   var domain = data2.map(function(d){ return slugify(d.name); })
-  var range = ["#fc8d59", "#91cf60", "#a0d0de", "#97b5cf"]
+  var range = ["#ffbf00", "#fff", "#a0d0de", "#97b5cf"]
   var palette = d3.scale.ordinal().domain(domain).range(range);
 
   var chart4 = d3waffle()
@@ -21,15 +21,17 @@ function drawWaffle() {
     .attr("height", 600)
     .attr("id", "waffle")
     .datum(data2)
-    .call(chart4);
+    .call(chart4)
+    .attr("stroke", "#ffbf00");
 }
 
 function d3waffle () {
   var margin = {top: 10, right: 10, bottom: 10, left: 10},
-      icon = "&#10047;",
+      //icon = "&#11043;",
+      icon = "&#11042;",
       scale = 1,
       rows = 10,
-      adjust = 0.8,
+      adjust = 0.7,
       colorscale = d3.scale.category20(),
       appearancetimes = function(d, i){ return 500; },
       height = 200,

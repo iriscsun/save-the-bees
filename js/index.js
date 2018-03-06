@@ -8,14 +8,14 @@ $.when(
     })
 ).done(function(){
 
-
   function chooseVis(section) {
 
     d3.select("#earth-things").remove();
     d3.select("#waffle").remove();
-  //d3.select("#line-chart").remove();
+    d3.select("#line-chart").remove();
+
 		if (section == 0) {
-		//drawLines()
+		drawLines()
 		} else if (section == 1) {
       earthlyBees()
     } else if (section == 2){
