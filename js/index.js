@@ -18,18 +18,20 @@ $.when(
     d3.select("#treemap").remove();
 
     if (section == 0) {
-      
+
     } else if (section == 1) {
       earthlyBees()
     } else if (section == 2) {
       drawPesticides()
     } else if (section == 3){
-     	drawSimulation()
+      drawPesticidesUS()
     } else if (section == 4){
-      drawBees()
+      drawSimulation()
     } else if (section == 5){
-      drawLines()
+      drawBees()
     } else if (section == 6){
+      drawLines()
+    } else if (section == 7){
       drawTreeMap()
     }
   }

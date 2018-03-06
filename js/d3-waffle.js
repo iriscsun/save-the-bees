@@ -1,8 +1,8 @@
 // SVG to work with
 function drawPesticides() {
   var data2 = [
-    { "name": "Clean Honey", "value": 25},
-    { "name": "Infected Honey", "value": 75}
+    { "name": "Clean Honey (Global)", "value": 25},
+    { "name": "Infected Honey (Global)", "value": 75}
   ]
 
   /* to color elements we use the class name ( slugigy(name) ) */
@@ -23,6 +23,32 @@ function drawPesticides() {
     .datum(data2)
     .call(chart4)
     .attr("stroke", "#ffbf00");
+}
+
+function drawPesticidesUS() {
+  var data2 = [
+    { "name": "Clean Honey (US)", "value": 14},
+    { "name": "Infected Honey (US)", "value": 86}
+  ]
+
+  /* to color elements we use the class name ( slugigy(name) ) */
+  var domain = data2.map(function(d){ return slugify(d.name); })
+  var range = ["#B22222", "#fff", "#a0d0de", "#97b5cf"]
+  var palette = d3.scale.ordinal().domain(domain).range(range);
+
+  var chart4 = d3waffle("&#11042")
+                  .rows(10)
+                  .colorscale(palette)
+                  .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
+                  .height(500);
+
+  d3.select("#vis").append("svg")
+    .attr("width", 600)
+    .attr("height", 600)
+    .attr("id", "waffle")
+    .datum(data2)
+    .call(chart4)
+    .attr("stroke", "#B22222");
 }
 
 function drawBees() {

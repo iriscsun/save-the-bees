@@ -1,3 +1,21 @@
+h1 {
+    font-size: 36px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+h2, h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  font-weight: normal;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 330;
+}
+
 #sections {
   position: relative;
   display: inline-block;
@@ -20,12 +38,25 @@
 
 /* increase the font size for the title class */
 .title {
-  font-size:30px;
+  font-size:35px;
+  font-weight:500;
+}
+
+.intro {
+  font-size:18px;
+  font-weight:330;
+}
+
+.fact {
+  font-size:25px;
+  font-weight:350;
+  color: gray;
+  font-style: italic;
 }
 
 /* Give the step class a margin bottom of 300px */
 .step {
-  margin-bottom:500px;
+  margin-bottom:300px;
 }
 
 /******  TREE LAYOUT MONICA  ******/
@@ -45,19 +76,7 @@ path.link {
 .node:not(:hover) .nodetext {
   display: none;
 }
-h1
-{
-    font-size: 36px;
-    margin: 10px 0;
-    text-transform: uppercase;
-    font-weight: normal;
-}
 
-h2, h3 {
-font-size: 18px;
-margin: 5px 0;
-font-weight: normal;
-}
 header {
     padding: 20px;
     position: absolute;
