@@ -3,25 +3,49 @@ $.when(
     $.getScript("js/d3-waffle.js"),
     $.getScript("js/linechart.js"),
     $.getScript("js/simulation.js"),
+    $.getScript("js/treemap.js"),
     $.Deferred(function( deferred ){
         $( deferred.resolve );
     })
 ).done(function(){
 
-
   function chooseVis(section) {
-
+		d3.select("#bees").remove();
     d3.select("#earth-things").remove();
     d3.select("#waffle").remove();
-  //d3.select("#line-chart").remove();
-		if (section == 0) {
-		//drawLines()
-		} else if (section == 1) {
+    d3.select("#line-chart").remove();
+    d3.select("#simulation").remove();
+    d3.select("#treemap").remove();
+
+    if (section == 0) {
+			var svg = d3.select('#vis').append('svg')
+				.attr("width", 600)
+				.attr("height", 600)
+				.attr("id", "bees")
+
+			svg.append('svg:image')
+			.attr({
+			  'xlink:href': 'bees.png',  // can also add svg file here
+			  x: 25,
+			  y: 150,
+			  width: 550,
+				heigh: 500
+			});
+
+    } else if (section == 1) {
       earthlyBees()
-    } else if (section == 2){
-     	drawWaffle()
+    } else if (section == 2) {
+      drawPesticides()
     } else if (section == 3){
+      drawPesticidesUS()
+    } else if (section == 4){
       drawSimulation()
+    } else if (section == 5){
+      drawBees()
+    } else if (section == 6){
+      drawLines()
+    } else if (section == 7){
+      drawTreeMap()
     }
   }
 
