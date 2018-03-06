@@ -27,8 +27,8 @@ function drawPesticides() {
 
 function drawPesticidesUS() {
   var data2 = [
-    { "name": "Clean Honey (US)", "value": 14},
-    { "name": "Infected Honey (US)", "value": 86}
+    { "name": "Clean Honey (North America)", "value": 14},
+    { "name": "Infected Honey (North America)", "value": 86}
   ]
 
   /* to color elements we use the class name ( slugigy(name) ) */
