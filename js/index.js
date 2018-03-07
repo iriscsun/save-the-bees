@@ -11,57 +11,63 @@ $.when(
 
   function chooseVis(section) {
 
-
-
-    d3.select("#line-chart").remove();
-    d3.select("#simulation").remove();
-    d3.select("#treemap").remove();
-
     if (section == 0) {
-			d3.select("#bees").remove();
+
 			d3.select("#earth-things").remove();
 
 			var svg = d3.select('#vis').append('svg')
 				.attr("width", 600)
 				.attr("height", 600)
 				.attr("id", "bees")
-
-			svg.append('svg:image')
-			.attr({
-			  'xlink:href': 'bees.png',  // can also add svg file here
-			  x: 25,
-			  y: 150,
-			  width: 550,
-				heigh: 500
-			});
+				.append('svg:image')
+				.attr({
+				  'xlink:href': 'bees.png', 
+				  x: 25,
+				  y: 150,
+				  width: 550,
+					heigh: 500
+				});
 
     } else if (section == 1) {
-			d3.select("#waffle1").remove();
 
+			d3.select("#bees").remove();
+			d3.select("#waffle1").remove();
       earthlyBees()
+
     } else if (section == 2) {
+
 			d3.select("#earth-things").remove();
 			d3.select("#waffle2").remove();
-
       drawPesticides()
 
-
     } else if (section == 3){
+
 			d3.select("#waffle1").remove();
-
-
+			d3.select("#simulation").remove();
       drawPesticidesUS()
-    } else if (section == 4){
-			d3.select("#waffle2").remove();
 
+    } else if (section == 4){
+
+			d3.select("#waffle2").remove();
       drawSimulation()
+
     } else if (section == 5){
-      drawBees()
+
+			d3.select("#line-chart").remove();
+
     } else if (section == 6){
+			d3.select("#treemap").remove();
+
       drawLines()
+
     } else if (section == 7){
+
+			d3.select("#line-chart").remove();
       drawTreeMap()
-    }
+
+    } else {
+			d3.select("#treemap").remove();
+		}
   }
 
   var update = function(value) {
