@@ -57,11 +57,11 @@ $.when(
 
     } else if (section == 6){
 			d3.select("#treemap").remove();
-
+			d3.select("#simulation").remove();
       drawLines()
 
     } else if (section == 7){
-			d3.select("#simulation").remove();
+
 			d3.select("#line-chart").remove();
       drawTreeMap()
 
