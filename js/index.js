@@ -21,7 +21,7 @@ $.when(
 				.attr("id", "bees")
 				.append('svg:image')
 				.attr({
-				  'xlink:href': 'bees.png', 
+				  'xlink:href': 'bees.png',
 				  x: 25,
 				  y: 150,
 				  width: 550,
@@ -61,7 +61,7 @@ $.when(
       drawLines()
 
     } else if (section == 7){
-
+			d3.select("#simulation").remove();
 			d3.select("#line-chart").remove();
       drawTreeMap()
 
