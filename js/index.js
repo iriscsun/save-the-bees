@@ -49,7 +49,7 @@ $.when(
     } else if (section == 4){
 
 			d3.select("#waffle2").remove();
-      drawSimulation()
+      startSim();
 
     } else if (section == 5){
 
@@ -58,6 +58,7 @@ $.when(
     } else if (section == 6){
 			d3.select("#treemap").remove();
 			d3.select("#simulation").remove();
+
       drawLines()
 
     } else if (section == 7){

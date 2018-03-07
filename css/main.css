@@ -59,6 +59,39 @@ p {
   margin-bottom:300px;
 }
 
+#speed {
+	display: inline-block;
+	max-width: 300px;
+	width: 80%;
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 30px;
+}
+
+/* https://css-tricks.com/making-pure-css-playpause-button/ */
+.playpause label {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0;
+  height: 36px;
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: double;
+  border-width: 0px 0 0px 30px;
+}
+.playpause input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+.playpause input[type="checkbox"]:checked + label {
+  border-style: solid;
+  border-width: 18px 0 18px 30px;
+}
+.playpause input[type="checkbox"]:focus + label {
+  box-shadow: 0 0 5px lightblue;
+}
+
 /******  TREE LAYOUT MONICA  ******/
 
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
@@ -97,18 +130,18 @@ a:hover {
 a:active {
      color: #EE3124;
     }
-    
- 
+
+
  /*tree map links*/
 .node {
   cursor: pointer;
 }
- 
- 
+
+
 .node text {
   font: 12px sans-serif;
 }
- 
+
 .link {
   fill: none;
   stroke: #ccc;
