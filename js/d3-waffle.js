@@ -19,7 +19,7 @@ function drawPesticides() {
   d3.select("#vis").append("svg")
     .attr("width", 600)
     .attr("height", 600)
-    .attr("id", "waffle")
+    .attr("id", "waffle1")
     .datum(data2)
     .call(chart4)
     .attr("stroke", "#ffbf00");
@@ -45,7 +45,7 @@ function drawPesticidesUS() {
   d3.select("#vis").append("svg")
     .attr("width", 600)
     .attr("height", 600)
-    .attr("id", "waffle")
+    .attr("id", "waffle2")
     .datum(data2)
     .call(chart4)
     .attr("stroke", "#B22222");
@@ -71,7 +71,7 @@ function drawBees() {
   d3.select("#vis").append("svg")
     .attr("width", 600)
     .attr("height", 600)
-    .attr("id", "waffle")
+    .attr("id", "waffle1")
     .datum(data2)
     .call(chart4)
     .attr("stroke", "#cc0000");
@@ -83,7 +83,7 @@ function d3waffle (iconCode) {
       icon = iconCode,
       scale = 1,
       rows = 10,
-      adjust = 0.7,
+      adjust = 0.6,
       colorscale = d3.scale.category20(),
       appearancetimes = function(d, i){ return 500; },
       height = 200,

@@ -10,14 +10,17 @@ $.when(
 ).done(function(){
 
   function chooseVis(section) {
-		d3.select("#bees").remove();
-    d3.select("#earth-things").remove();
-    d3.select("#waffle").remove();
+
+
+
     d3.select("#line-chart").remove();
     d3.select("#simulation").remove();
     d3.select("#treemap").remove();
 
     if (section == 0) {
+			d3.select("#bees").remove();
+			d3.select("#earth-things").remove();
+
 			var svg = d3.select('#vis').append('svg')
 				.attr("width", 600)
 				.attr("height", 600)
@@ -33,12 +36,24 @@ $.when(
 			});
 
     } else if (section == 1) {
+			d3.select("#waffle1").remove();
+
       earthlyBees()
     } else if (section == 2) {
+			d3.select("#earth-things").remove();
+			d3.select("#waffle2").remove();
+
       drawPesticides()
+
+
     } else if (section == 3){
+			d3.select("#waffle1").remove();
+
+
       drawPesticidesUS()
     } else if (section == 4){
+			d3.select("#waffle2").remove();
+
       drawSimulation()
     } else if (section == 5){
       drawBees()
