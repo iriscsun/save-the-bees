@@ -6,12 +6,9 @@ function drawTreeMap() {
 
       //json data
   var treeData =    [ {
-      "name": "Top Level 1 ",
+      "name": "Life",
       "parent": "null",
-      "img": "https://www.shareicon.net/data/128x128/2016/04/12/748601_insect_512x512.png",
-      "name": "Top Level 2",
-      "parent": "null",
-      "img": "https://www.shareicon.net/data/128x128/2016/04/12/748601_insect_512x512.png",
+      "img": "https://image.flaticon.com/icons/svg/124/124555.svg",
       "children": [
         {
           "name": "Crops",
@@ -21,41 +18,33 @@ function drawTreeMap() {
             {
               "name": "Fruits",
               "parent": "Level 2: A",
-              "img": "https://image.flaticon.com/icons/svg/755/755261.svg",
-                "children": [
-                  {
-                    "name": "Apples",
-                    "parent": "Level 2: A",
-                    "img": "https://image.flaticon.com/icons/svg/135/135728.svg",
-                  },
-                  {
-                    "name": "Oranges",
-                    "parent": "Level 2: A",
-                    "img": "https://image.flaticon.com/icons/svg/135/135620.svg",
-                  },
-                ]
+              "img": "https://image.flaticon.com/icons/svg/415/415744.svg"
             },
             {
               "name": "Vegetables",
               "parent": "Level 2: A",
-              "img": "https://image.flaticon.com/icons/svg/498/498229.svg",
-              "children": [
-                {
-                  "name": "Broccoli",
-                  "parent": "Level 2: A",
-                  "img": "https://image.flaticon.com/icons/svg/135/135694.svg",
-                },
-                {
-                  "name": "Onion",
-                  "parent": "Level 2: A",
-                  "img": "https://image.flaticon.com/icons/svg/184/184506.svg",
-                },
-              ]
+              "img": "https://image.flaticon.com/icons/svg/135/135637.svg"
             }
           ]
         },
         {
-          "name": "Habitats",
+          "name": "Animals",
+          "parent": "Top Level",
+          "img": "https://image.flaticon.com/icons/svg/235/235376.svg",
+          "children": [
+            {
+              "name": "Cattle",
+              "parent": "Level 2: A",
+              "img": "https://image.flaticon.com/icons/svg/591/591341.svg",
+            },
+            {
+              "name": "Insects",
+              "parent": "Level 2: A",
+              "img": "https://image.flaticon.com/icons/svg/764/764017.svg",
+            },
+          ]
+        },{
+        "name": "Habitats",
           "parent": "Top Level",
           "img": "https://image.flaticon.com/icons/svg/119/119591.svg",
           "children": [
@@ -65,9 +54,9 @@ function drawTreeMap() {
               "img": "https://image.flaticon.com/icons/svg/740/740899.svg",
             },
             {
-              "name": "Animal Life",
+              "name": "Trees",
               "parent": "Level 2: A",
-              "img": "https://image.flaticon.com/icons/svg/235/235353.svg",
+              "img": "https://image.flaticon.com/icons/svg/764/764006.svg",
             },
           ]
         }
@@ -128,13 +117,15 @@ function drawTreeMap() {
         .attr("x", function(d) { return -25;})
         .attr("y", function(d) { return -25;})
         .attr("height", 50)
-        .attr("width", 50);
+        .attr("width", 50)
 
     nodeEnter.append("text")
-  	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
-  	  .attr("dy", ".35em")
-  	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-  	  .text(function(d) { return d.name; })
+  	  //.attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+      .attr("dx", "3em")
+      .attr("dy", ".3em")
+  	  //.attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+      .text(function(d) { return d.name; })
+      //.style("font-weight", function(d) { return d.name ? "bold" : ""; })
   	  .style("fill-opacity", 1e-6);
 
     // Transition nodes to their new position.

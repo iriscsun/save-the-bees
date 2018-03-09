@@ -14,7 +14,7 @@ function drawPesticides() {
                   .rows(10)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
-                  .height(500);
+                  .height(600);
 
   d3.select("#vis").append("svg")
     .attr("width", 600)
@@ -40,7 +40,7 @@ function drawPesticidesUS() {
                   .rows(10)
                   .colorscale(palette)
                   .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
-                  .height(500);
+                  .height(600);
 
   d3.select("#vis").append("svg")
     .attr("width", 600)

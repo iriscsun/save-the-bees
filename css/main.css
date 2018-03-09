@@ -36,6 +36,28 @@ p {
   margin-top: 70px;
 }
 
+#sick-bee, #healthy-bee {
+	 width: 50px;
+	 height: 50px;
+	 border-radius: 50%;
+	 display: inline-block;
+	 margin-left: 30px;
+	 margin-right: 30px;
+}
+
+.bee-legend {
+	margin-left: 90px;
+}
+
+#healthy-bee {
+	margin-left: 120px;
+}
+
+.in-line {
+	 display: inline-block;
+	 text-align: center;
+}
+
 /* increase the font size for the title class */
 .title {
   font-size:35px;
@@ -54,18 +76,30 @@ p {
   font-style: italic;
 }
 
+.source {
+	font-size:18px;
+	color: #ffbf00;
+}
+
 /* Give the step class a margin bottom of 300px */
 .step {
   margin-bottom:300px;
 }
 
-#speed {
+#pesticides-slider {
 	display: inline-block;
-	max-width: 300px;
+	max-width: 400px;
 	width: 80%;
 	position: absolute;
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-left: 30px;
+}
+
+#pest-text {
+	max-width: 400px;
+	width: 80%;
+	position: absolute;
+	margin-left: 100px;
 }
 
 /* https://css-tricks.com/making-pure-css-playpause-button/ */
@@ -125,7 +159,7 @@ a:visited {
      color: #EE3124;
     }
 a:hover {
-     color: #A4CD39; text-decoration: underline;
+     color: #ffbf00;; text-decoration: underline;
     }
 a:active {
      color: #EE3124;
